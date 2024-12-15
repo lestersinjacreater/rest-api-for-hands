@@ -1,0 +1,110 @@
+### Register first user (admin)
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin123",
+    "name": "Admin User",
+    "email": "rhomwa@gmail.com",
+    "role": "admin"
+}
+
+### Register regular user
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username": "user1",
+    "password": "user123",
+    "name": "Regular User",
+    "email": "lestetsinjawatosia@gmail.com",
+    "phone": "1234567890"
+}
+
+
+
+### Login as admin
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "email": "rhomwa@gmail.com",
+    "password": "admin123"
+}
+
+### Login as user
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "email": "lestetsinjawatosia@gmail.com",
+    "password": "user123"
+}
+
+### Create Update (Admin only)
+POST http://localhost:8000/updates
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyaG9td2FAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzM0Mzk1OTQyfQ.d2wsPIP8G1ftdXRjYHznoHWGOjn_ERD8QF1L48DryRQ
+
+{
+    "userId": 1,
+    "content": "This is a test update from admin"
+}
+
+### Get All Updates
+GET http://localhost:8000/updates
+Authorization: Bearer <token_here>
+
+### Edit Update (Admin only)
+PUT http://localhost:8000/updates/1
+Content-Type: application/json
+Authorization: Bearer <admin_token_here>
+
+{
+    "content": "This is an edited update"
+}
+
+### Delete Update (Admin only)
+DELETE http://localhost:8000/updates/1
+Authorization: Bearer <admin_token_here>
+
+### Create Testimonial
+POST http://localhost:8000/testimonials
+Content-Type: application/json
+Authorization: Bearer <token_here>
+
+{
+    "userId": 1,
+    "text": "This is a test testimonial"
+}
+
+### Get All Testimonials
+GET http://localhost:8000/testimonials
+Authorization: Bearer <token_here>
+
+### Get Testimonial by ID
+GET http://localhost:8000/testimonials/1
+Authorization: Bearer <token_here>
+
+### Delete Testimonial (Admin only)
+DELETE http://localhost:8000/testimonials/1
+Authorization: Bearer <admin_token_here>
+
+### Invalid Registration (Test Validation)
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username": "test",
+    "password": "test123"
+}
+
+### Invalid Login (Test Validation)
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "username": "nonexistent",
+    "password": "wrong"
+}
