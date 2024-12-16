@@ -6,7 +6,8 @@ export default defineConfig({
     schema: "./src/drizzle/schema.ts",
     out: "./src/drizzle/migrations",
     dbCredentials: {
-        url: process.env.Database_URL as string,
+        connectionString: process.env.DATABASE_URL as string,
+        ssl: true
     },
     verbose: true,
     strict: true,

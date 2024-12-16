@@ -8,6 +8,7 @@ import { HTTPException } from 'hono/http-exception'
 import { rateLimiter } from "hono-rate-limiter";
 import { jwt } from 'hono/jwt';
 import { readFile } from 'fs/promises';
+import { client } from './drizzle/db'  // Import the client
 
 import { userRouter } from './users/user.router'
 import { authRouter } from './auth/auth.router'
@@ -56,9 +57,29 @@ app.all('*', (c) => {
   return c.text('Page not found', 404)
 })
 
+// Graceful shutdown
+const shutdown = async () => {
+    console.log('Shutting down gracefully...');
+    await client.end();
+    process.exit(0);
+};
+
+process.on('SIGTERM', shutdown);
+process.on('SIGINT', shutdown);
+
+// Error handling for uncaught exceptions
+process.on('uncaughtException', async (error) => {
+    console.error('Uncaught Exception:', error);
+    await client.end();
+    process.exit(1);
+});
+
 serve({
   fetch: app.fetch,
   port: Number(process.env.PORT)
-})
+}).catch(err => {
+    console.error('Server error:', err);
+    process.exit(1);
+});
 
 console.log(`Server is running on port ${process.env.PORT}`)
