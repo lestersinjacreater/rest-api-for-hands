@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc && cp .env dist/",
+    "build": "tsc ",
     "start": "node -r dotenv/config dist/index.js",
     "gen": "drizzle-kit generate",
     "migrate": " tsx src/drizzle/migrate.ts",
