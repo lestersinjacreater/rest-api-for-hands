@@ -1,5 +1,5 @@
 import { Context, Next } from "hono";
-import { AuthTable } from "../drizzle/schema";
+import { AuthTable, UsersTable } from "../drizzle/schema";
 import db from "../drizzle/db";
 import { eq } from "drizzle-orm";
 
@@ -12,15 +12,19 @@ export const adminGuard = async (c: Context, next: Next) => {
   // Get token from header
   const token = authHeader.split(" ")[1];
   
-  // Verify admin role
-  const user = await db.query.AuthTable.findFirst({
-    where: eq(AuthTable.username, token),
+  // Verify admin role using the correct schema
+  const auth = await db.query.AuthTable.findFirst({
+    where: (auth, { eq }) => eq(auth.userid, 
+      db.select({ userid: UsersTable.userid })
+        .from(UsersTable)
+        .where(eq(UsersTable.email, token))
+    ),
     columns: {
       role: true
     }
   });
 
-  if (!user || user.role !== "admin") {
+  if (!auth || auth.role !== "admin") {
     return c.json({ error: "Unauthorized" }, 403);
   }
 
