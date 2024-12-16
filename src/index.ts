@@ -74,12 +74,13 @@ process.on('uncaughtException', async (error) => {
     process.exit(1);
 });
 
-serve({
-  fetch: app.fetch,
-  port: Number(process.env.PORT)
-}).catch(err => {
-    console.error('Server error:', err);
-    process.exit(1);
-});
-
-console.log(`Server is running on port ${process.env.PORT}`)
+try {
+  serve({
+    fetch: app.fetch,
+    port: Number(process.env.PORT)
+  });
+  console.log(`Server is running on port ${process.env.PORT}`);
+} catch (err: unknown) {
+  console.error('Server error:', err);
+  process.exit(1);
+}
