@@ -3,10 +3,10 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "admin",
+    "username": "rambo",
     "password": "admin123",
     "name": "Admin User",
-    "email": "rhomwa@gmail.com",
+    "email": "rambo@gmail.com",
     "role": "admin"
 }
 
@@ -15,12 +15,16 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "user1",
+    "username": "antonio guzman",
     "password": "user123",
     "name": "Regular User",
-    "email": "lestetsinjawatosia@gmail.com",
+    "email": "lestersinja661@gmail.com",
     "phone": "1234567890"
 }
+
+
+
+
 
 
 
@@ -29,7 +33,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "rhomwa@gmail.com",
+    "email": "rambo@gmail.com",
     "password": "admin123"
 }
 
@@ -42,24 +46,33 @@ Content-Type: application/json
     "password": "user123"
 }
 
+
+
+
+
+
+
+
 ### Create Update (Admin only)
 POST http://localhost:8000/updates
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MzQ0NjQ5NTF9.FEcmfNsqjVYQ6SCEHBVxXCz18r-4U5rgGDmxXhIQiSc
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyaG9td2FAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzM0Mzk1OTQyfQ.d2wsPIP8G1ftdXRjYHznoHWGOjn_ERD8QF1L48DryRQ
 
 {
-    "userId": 1,
+    "userId": 4,
     "content": "This is a test update from admin"
 }
 
 ### Get All Updates
 GET http://localhost:8000/updates
-Authorization: Bearer <token_here>
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MzQ0NjQ5NTF9.FEcmfNsqjVYQ6SCEHBVxXCz18r-4U5rgGDmxXhIQiSc
+
 
 ### Edit Update (Admin only)
 PUT http://localhost:8000/updates/1
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MzQ0NjQ5NTF9.FEcmfNsqjVYQ6SCEHBVxXCz18r-4U5rgGDmxXhIQiSc
 Content-Type: application/json
-Authorization: Bearer <admin_token_here>
+
 
 {
     "content": "This is an edited update"
@@ -67,12 +80,27 @@ Authorization: Bearer <admin_token_here>
 
 ### Delete Update (Admin only)
 DELETE http://localhost:8000/updates/1
-Authorization: Bearer <admin_token_here>
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MzQ0NjQ5NTF9.FEcmfNsqjVYQ6SCEHBVxXCz18r-4U5rgGDmxXhIQiSc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Create Testimonial
 POST http://localhost:8000/testimonials
-Content-Type: application/json
-Authorization: Bearer <token_here>
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXRzaW5qYXdhdG9zaWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MzQ0NjU5Njh9.-WCLifpP4aRshQD_Uru4e-Y26ePu9JUSjQ0k5WE1rdk
+Content-Type: application/json 
 
 {
     "userId": 1,
@@ -81,30 +109,24 @@ Authorization: Bearer <token_here>
 
 ### Get All Testimonials
 GET http://localhost:8000/testimonials
-Authorization: Bearer <token_here>
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXRzaW5qYXdhdG9zaWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MzQ0NjU5Njh9.-WCLifpP4aRshQD_Uru4e-Y26ePu9JUSjQ0k5WE1rdk
 
 ### Get Testimonial by ID
 GET http://localhost:8000/testimonials/1
-Authorization: Bearer <token_here>
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXRzaW5qYXdhdG9zaWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MzQ0NjU5Njh9.-WCLifpP4aRshQD_Uru4e-Y26ePu9JUSjQ0k5WE1rdk
 
 ### Delete Testimonial (Admin only)
 DELETE http://localhost:8000/testimonials/1
-Authorization: Bearer <admin_token_here>
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MzQ0Njc0NTJ9.cObjMKzWWiU379jbChz_1XLHP19nK6KeCZs76xeY8Kc
 
-### Invalid Registration (Test Validation)
-POST http://localhost:8000/auth/register
-Content-Type: application/json
 
-{
-    "username": "test",
-    "password": "test123"
-}
 
-### Invalid Login (Test Validation)
-POST http://localhost:8000/auth/login
-Content-Type: application/json
 
-{
-    "username": "nonexistent",
-    "password": "wrong"
-}
+
+
+
+
+
+
+
+
