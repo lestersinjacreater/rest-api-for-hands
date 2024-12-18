@@ -10,6 +10,9 @@ export const registerUser = async (c: Context) => {
     try {
         const userData = await c.req.json();
         
+        // Log the received data
+        console.log('Received registration data:', userData);
+        
         const createdUser = await createAuthUserService(userData);
         if (!createdUser) {
             return c.json({ error: "User not registered" }, 404);

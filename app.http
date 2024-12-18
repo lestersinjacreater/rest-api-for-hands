@@ -6,7 +6,7 @@ Content-Type: application/json
     "username": "rambo",
     "password": "admin123",
     "name": "Admin User",
-    "email": "rambo@gmail.com",
+    "email": "rhomwa@gmail.com",
     "role": "admin"
 }
 
@@ -15,9 +15,32 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "antonio guzman",
+    "username": "anto guzman",
     "password": "user123",
     "name": "Regular User",
+    "email": "mwangimainaamos99@gmail.com",
+    "phone": "1234567890"
+}
+
+### Register user
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username": "antonio guzman",
+    "password": "user123",
+    
+    "email": "lesterja661@gmail.com",
+   
+}
+
+### Register user
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username": "antonio guzman",
+    "password": "user123",
     "email": "lestersinja661@gmail.com",
     "phone": "1234567890"
 }
