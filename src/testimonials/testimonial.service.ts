@@ -3,30 +3,6 @@ import db from "../drizzle/db";
 import { TITestimonial, TSTestimonial, TestimonialsTable } from "../drizzle/schema";
 
 // Get all testimonials
-// export const getTestimonialsService = async (): Promise<TSTestimonial[]> => {
-//   //  {
-//   //   return await db.query.TestimonialsTable.findMany({
-//   //     limit,
-//   //     with: {
-//   //       user: {
-//   //         columns: {
-//   //           name: true,
-//   //         }
-//   //       }
-//   //     }
-//   //   });
-//   // }
-//   return await db.query.TestimonialsTable.findMany({
-//     with: {
-//       user: {
-//         columns: {
-//           name: true,
-//         }
-//       }
-//     }
-//   });
-// };
-
 
 
 export const getTestimonialsService = async (limit?: number): Promise<TSTestimonial[]> => {

@@ -1,155 +1,121 @@
-### Register first user (admin)
+### Authentication Endpoints
+
+# Register a new user
 POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "rambo",
+    "username": "testuser",
+    "email": "testuser@example.com",
+    "password": "password123",
+    "phone": "1234567890"
+}
+
+### Login user
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "email": "testuser@example.com",
+    "password": "password123"
+}
+
+### Register admin user
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "email": "admin@example.com",
     "password": "admin123",
-    "name": "Admin User",
-    "email": "rhomwa@gmail.com",
     "role": "admin"
 }
 
-### Register regular user
-POST http://localhost:8000/auth/register
-Content-Type: application/json
-
-{
-    "username": "anto guzman",
-    "password": "user123",
-    "name": "Regular User",
-    "email": "mwangimainaamos99@gmail.com",
-    "phone": "1234567890"
-}
-
-### Register user
-POST http://localhost:8000/auth/register
-Content-Type: application/json
-
-{
-    "username": "antonio guzman",
-    "password": "user123",
-    
-    "email": "lesterja661@gmail.com",
-   
-}
-
-### Register user
-POST http://localhost:8000/auth/register
-Content-Type: application/json
-
-{
-    "username": "antonio guzman",
-    "password": "user123",
-    "email": "lestersinja661@gmail.com",
-    "phone": "1234567890"
-}
-
-
-
-
-
-
-
-### Login as admin
+### Login admin (save this token for admin operations)
 POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "rambo@gmail.com",
+    "email": "admin@example.com",
     "password": "admin123"
 }
 
-### Login as user
-POST http://localhost:8000/auth/login
+### User Management Endpoints
+
+### Get all users (Admin only)
+GET http://localhost:8000/users
+Authorization: Bearer {{adminToken}}
+
+### Get specific user
+GET http://localhost:8000/users/1
+Authorization: Bearer {{userToken}}
+
+### Update user
+PUT http://localhost:8000/users/1
+Authorization: Bearer {{userToken}}
 Content-Type: application/json
 
 {
-    "email": "lestetsinjawatosia@gmail.com",
-    "password": "user123"
+    "phone": "9876543210"
 }
 
+### Delete user (Admin only)
+DELETE http://localhost:8000/users/1
+Authorization: Bearer {{adminToken}}
 
+### Testimonial Endpoints
 
-
-
-
-
-
-### Create Update (Admin only)
-POST http://localhost:8000/updates
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MzQ0NjQ5NTF9.FEcmfNsqjVYQ6SCEHBVxXCz18r-4U5rgGDmxXhIQiSc
-Content-Type: application/json
-
-{
-    "userId": 4,
-    "content": "This is a test update from admin"
-}
-
-### Get All Updates
-GET http://localhost:8000/updates
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MzQ0NjQ5NTF9.FEcmfNsqjVYQ6SCEHBVxXCz18r-4U5rgGDmxXhIQiSc
-
-
-### Edit Update (Admin only)
-PUT http://localhost:8000/updates/1
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MzQ0NjQ5NTF9.FEcmfNsqjVYQ6SCEHBVxXCz18r-4U5rgGDmxXhIQiSc
-Content-Type: application/json
-
-
-{
-    "content": "This is an edited update"
-}
-
-### Delete Update (Admin only)
-DELETE http://localhost:8000/updates/1
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MzQ0NjQ5NTF9.FEcmfNsqjVYQ6SCEHBVxXCz18r-4U5rgGDmxXhIQiSc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Create Testimonial
+### Create testimonial
 POST http://localhost:8000/testimonials
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXRzaW5qYXdhdG9zaWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MzQ0NjU5Njh9.-WCLifpP4aRshQD_Uru4e-Y26ePu9JUSjQ0k5WE1rdk
-Content-Type: application/json 
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
 
 {
     "userId": 1,
-    "text": "This is a test testimonial"
+    "text": "This is a great service! Highly recommended."
 }
 
-### Get All Testimonials
+### Get all testimonials
 GET http://localhost:8000/testimonials
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXRzaW5qYXdhdG9zaWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MzQ0NjU5Njh9.-WCLifpP4aRshQD_Uru4e-Y26ePu9JUSjQ0k5WE1rdk
+Authorization: Bearer {{userToken}}
 
-### Get Testimonial by ID
+### Get specific testimonial
 GET http://localhost:8000/testimonials/1
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXRzaW5qYXdhdG9zaWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MzQ0NjU5Njh9.-WCLifpP4aRshQD_Uru4e-Y26ePu9JUSjQ0k5WE1rdk
+Authorization: Bearer {{userToken}}
 
-### Delete Testimonial (Admin only)
+### Delete testimonial (Admin only)
 DELETE http://localhost:8000/testimonials/1
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW1ib0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MzQ0Njc0NTJ9.cObjMKzWWiU379jbChz_1XLHP19nK6KeCZs76xeY8Kc
+Authorization: Bearer {{adminToken}}
 
+### Update Endpoints (Admin Only)
 
+### Create update
+POST http://localhost:8000/updates
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
 
+{
+    "userId": 1,
+    "content": "New feature release: Enhanced user dashboard now available!"
+}
 
+### Get all updates
+GET http://localhost:8000/updates
+Authorization: Bearer {{userToken}}
 
+### Edit update
+PUT http://localhost:8000/updates/1
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
 
+{
+    "content": "Updated: New feature release with additional improvements!"
+}
 
+### Delete update
+DELETE http://localhost:8000/updates/1
+Authorization: Bearer {{adminToken}}
 
-
-
-
-
+### Variables (for REST Client in VS Code)
+@userToken = // paste user JWT token here after login
+@adminToken = // paste admin JWT token here after login

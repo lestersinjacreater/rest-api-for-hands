@@ -1,5 +1,5 @@
 {
-  "id": "656686a7-98b1-45e8-9490-063b00ff9b6e",
+  "id": "3c17d694-0e49-47ec-9bdc-ef6ea177db28",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -33,12 +33,6 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'user'"
-        },
-        "confirmation_code": {
-          "name": "confirmation_code",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
         },
         "created_at": {
           "name": "created_at",
@@ -186,6 +180,13 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true
+        },
+        "phone": {
+          "name": "phone",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "''"
         },
         "created_at": {
           "name": "created_at",

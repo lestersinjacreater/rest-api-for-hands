@@ -9,6 +9,7 @@ export const UsersTable = pgTable('users', {
   userid: serial('userid').primaryKey(),
   username: varchar('username', { length: 255 }).notNull().unique(),
   email: varchar('email', { length: 255 }).notNull().unique(),
+  phone: varchar('phone', { length: 20 }).notNull().default(''),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 });
@@ -19,7 +20,6 @@ export const AuthTable = pgTable('auth', {
   userid: integer('user_id').references(() => UsersTable.userid, { onDelete: "cascade" }),
   password: varchar('password', { length: 255 }).notNull(),
   role: roleEnum('role').default('user'),
-  confirmationCode: varchar('confirmation_code', { length: 255 }),
   createdAt: timestamp('created_at').defaultNow(),
 });
 

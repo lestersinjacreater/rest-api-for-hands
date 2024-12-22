@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS "auth" (
 	"user_id" integer,
 	"password" varchar(255) NOT NULL,
 	"role" "role" DEFAULT 'user',
-	"confirmation_code" varchar(255),
 	"created_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
@@ -31,6 +30,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"userid" serial PRIMARY KEY NOT NULL,
 	"username" varchar(255) NOT NULL,
 	"email" varchar(255) NOT NULL,
+	"phone" varchar(20) DEFAULT '' NOT NULL,
 	"created_at" timestamp DEFAULT now(),
 	"updated_at" timestamp DEFAULT now(),
 	CONSTRAINT "users_username_unique" UNIQUE("username"),

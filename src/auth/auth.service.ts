@@ -10,7 +10,7 @@ type LoginInput = z.infer<typeof loginUserSchema>;
 //create auth user service
 export const createAuthUserService = async (userData: any): Promise<string | null> => {
     try {
-        // First check if email already exists
+        // Check if email already exists
         const existingUser = await db.query.UsersTable.findFirst({
             where: (users, { eq }) => eq(users.email, userData.email)
         });
@@ -22,21 +22,22 @@ export const createAuthUserService = async (userData: any): Promise<string | nul
         // Hash the password
         const hashedPassword = await bycrpt.hash(userData.password, 10);
 
-        // If email doesn't exist, create the user record
+        // Create user record with minimal data
         const userResult = await db.insert(UsersTable).values({
             username: userData.username,
             email: userData.email,
+            phone: userData.phone || '', // Optional phone number
         }).returning();
 
         if (!userResult.length) {
             throw new Error("Failed to create user");
         }
 
-        // Then create the auth record with the user's ID
+        // Create auth record
         const authData: TIAuth = {
             userid: userResult[0].userid,
             password: hashedPassword,
-            role: userData.role || 'user',
+            role: 'user', // Default role
         };
 
         await db.insert(AuthTable).values(authData);
