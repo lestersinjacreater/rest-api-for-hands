@@ -1,85 +1,134 @@
-# Hands Limited API
+# Hands Limited API Documentation
 
-A focused Node.js/TypeScript API for managing user testimonials and company updates.
+A comprehensive REST API for managing users, testimonials, and company updates with authentication, rate limiting, and email notifications.
 
-## 🚀 Core Features
+## Table of Contents
+- [Features](#features)
+- [API Endpoints](#api-endpoints)
+- [Authentication](#authentication)
+- [Rate Limiting](#rate-limiting)
+- [Email Notifications](#email-notifications)
+- [Error Handling](#error-handling)
+- [Development Setup](#development-setup)
+- [Production Deployment](#production-deployment)
+- [Support](#support)
 
-- 🔐 User Authentication & Authorization
-- 👥 User Management
-- 📝 Testimonials System
-- 📢 Company Updates
-- 📧 Welcome Email Notifications
-- 🛡️ Security Features (CSRF, Rate Limiting)
-- 📊 Performance Monitoring
+## Features
 
-## 🛠️ Tech Stack
+- 🔐 JWT-based authentication
+- 👥 User management system
+- 📝 Testimonials management
+- 📢 Company updates system
+- 📧 Automated email notifications
+- ⚡ Rate limiting protection
+- 🔍 Input validation
+- 📊 Error handling
+- 🚀 Production-ready setup
 
-- **Runtime**: Node.js
-- **Language**: TypeScript
-- **Framework**: Hono
-- **Database**: PostgreSQL with Drizzle ORM
-- **Email**: Nodemailer
-- **Authentication**: JWT
-- **Validation**: Zod
-
-## 📋 Prerequisites
-
-- Node.js (v18 or higher)
-- PostgreSQL
-- npm or yarn
-
-## 🔧 Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/hands-limited-api.git
-cd hands-limited-api
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Set up environment variables:
-```bash
-DATABASE_URL=your_postgresql_url
-JWT_SECRET=your_jwt_secret
-EMAIL_USER=your_email
-EMAIL_PASS=your_email_password
-PORT=3000
-```
-
-4. Run migrations:
-```bash
-npm run migrate
-```
-
-5. Start the server:
-```bash
-npm run dev
-```
-
-## 🔑 API Endpoints
+## API Endpoints
 
 ### Authentication
-- `POST /auth/register` - Register new user
-- `POST /auth/login` - User login
 
-### Users
-- `GET /users` - Get all users (Admin)
-- `GET /users/:id` - Get user by ID
-- `PUT /users/:id` - Update user
-- `DELETE /users/:id` - Delete user (Admin)
+Headers: {
+"Authorization": "Bearer JWT_TOKEN",
+"Role": "admin"
+}
+Body: {
+"content": "string"
+}
+DELETE /updates/:id
+Headers: {
+"Authorization": "Bearer JWT_TOKEN",
+"Role": "admin"
+}
 
-### Testimonials
-- `GET /testimonials` - Get all testimonials
-- `POST /testimonials` - Create testimonial
-- `GET /testimonials/:id` - Get testimonial by ID
-- `DELETE /testimonials/:id` - Delete testimonial (Admin)
 
-### Updates
-- `GET /updates` - Get all updates
-- `POST /updates` - Create update (Admin)
-- `PUT /updates/:id` - Edit update (Admin)
-- `DELETE /updates/:id` - Delete update (Admin)
+## Email Notifications
+
+### Welcome Email
+- Sent automatically upon successful registration
+- Contains username and welcome message
+- Includes link to dashboard
+
+### Testimonial Confirmation
+- Sent after testimonial submission
+- Contains thank you message
+- Includes copy of submitted testimonial
+
+## Rate Limiting
+- Global: 100 requests per minute per IP
+- Login: 5 attempts per 15 minutes
+- Testimonials: 10 submissions per hour
+- Updates: 30 requests per minute for admins
+
+## Error Responses
+
+
+json
+400 Bad Request
+{
+
+"error": "Validation error message"
+}
+401 Unauthorized
+{
+"error": "Invalid credentials"
+}
+403 Forbidden
+{
+"error": "Insufficient permissions"
+}
+429 Too Many Requests
+{
+"error": "Rate limit exceeded",
+"retryAfter": number
+}
+
+
+
+
+## Development Setup
+
+1. Clone and Install:
+
+bash
+git clone https://github.com/yourusername/hands-limited-api.git
+cd hands-limited-api
+pnpm install
+
+
+2. Environment Setup:
+
+bash
+
+DATABASE_URL=postgresql://user:password@localhost:5432/db_name
+JWT_SECRET=your_jwt_secret
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_email_app_password
+PORT=8000
+
+
+3. Database Setup:
+
+bash
+pnpm migrate
+pnpm seed # Optional: adds test data
+
+
+4. Start Development Server:
+
+bash
+pnpm dev
+
+## Production Deployment
+- Set NODE_ENV=production
+- Configure proper CORS settings
+- Set up proper SSL/TLS
+- Configure production database
+- Set up monitoring and logging
+- Configure proper email service
+
+## Support
+- Technical Support: support@handslimited.com
+- API Documentation: https://handslimited.com/docs
+- Issue Tracking: GitHub Issues
