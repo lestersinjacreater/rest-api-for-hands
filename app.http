@@ -5,8 +5,8 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "testuser",
-    "email": "testuser@example.com",
+    "username": "Victor",
+    "email": "victorsinja@gmail.com",
     "password": "password123",
     "phone": "1234567890"
 }
@@ -16,7 +16,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "testuser@example.com",
+    "email": "lestersinja661@gmail.com",
     "password": "password123"
 }
 
@@ -67,11 +67,11 @@ Authorization: Bearer {{adminToken}}
 
 ### Create testimonial
 POST http://localhost:8000/testimonials
-Authorization: Bearer {{userToken}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXJzaW5qYTY2MUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczNDk3OTQyOH0.5u8Z09F25A-mnRPYv08CeN-sQ4FvfyFrWHNJJCvNVfY
 Content-Type: application/json
 
 {
-    "userId": 1,
+    "userId": 4,
     "text": "This is a great service! Highly recommended."
 }
 

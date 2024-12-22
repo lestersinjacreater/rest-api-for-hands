@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/ejs": "^3.1.5",
     "@types/node": "^20.17.10",
     "@types/nodemailer": "^6.4.15",
     "@types/pg": "^8.11.6",

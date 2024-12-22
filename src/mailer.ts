@@ -35,6 +35,26 @@ export const sendWelcomeEmail = async (email: string, username: string): Promise
   }
 };
 
+export const sendTestimonialThanksEmail = async (email: string, username: string): Promise<void> => {
+  try {
+    const templatePath = path.join(__dirname, 'templates', 'testimonial-thanks.ejs');
+    const emailHtml = await ejs.renderFile(templatePath, { username });
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: 'Thank You for Your Testimonial - HANDS LIMITED',
+      html: emailHtml
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Testimonial thank you email sent successfully to:', email);
+  } catch (error) {
+    console.error('Error sending testimonial thank you email:', error);
+    throw error;
+  }
+};
+
 // Verify transporter configuration
 transporter.verify((error, success) => {
   if (error) {
