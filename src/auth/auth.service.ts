@@ -24,6 +24,7 @@ export const createAuthUserService = async (userData: any): Promise<string | nul
 
         // Create user record with minimal data
         const userResult = await db.insert(UsersTable).values({
+            position: userData.position,
             username: userData.username,
             email: userData.email,
             phone: userData.phone || '', // Optional phone number

@@ -1,5 +1,5 @@
 import { pgTable, serial, varchar, timestamp, integer, boolean, pgEnum } from "drizzle-orm/pg-core";
-import { relations } from "drizzle-orm";
+import { Many, relations } from "drizzle-orm";
 
 // Role Enum
 export const roleEnum = pgEnum("role", ["admin", "user", "superuser"]);
@@ -9,6 +9,7 @@ export const UsersTable = pgTable('users', {
   userid: serial('userid').primaryKey(),
   username: varchar('username', { length: 255 }).notNull().unique(),
   email: varchar('email', { length: 255 }).notNull().unique(),
+  position: varchar('position', { length: 255 }).notNull(),
   phone: varchar('phone', { length: 20 }).notNull().default(''),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
@@ -55,6 +56,21 @@ export const authRelations = relations(AuthTable, ({ one }) => ({
     references: [UsersTable.userid],
   }),
 }));
+
+export const testimonialRelations = relations(TestimonialsTable, ({ one }) => ({
+  user: one(UsersTable, {
+    fields: [TestimonialsTable.userId],
+    references: [UsersTable.userid],
+  }),
+}));
+
+export const userRelations = relations(UsersTable, ({ many }) => ({
+  testimonials: many(TestimonialsTable),
+}));
+
+
+
+
 
 // Types
 export type TIUser = typeof UsersTable.$inferInsert;

@@ -5,8 +5,9 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "Victor",
-    "email": "victorsinja@gmail.com",
+    "username": "Vieeetr",
+    "email": "vitotttinja@gmail.com",
+    "position": "Software Developer",
     "password": "password123",
     "phone": "1234567890"
 }
@@ -16,7 +17,8 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "lestersinja661@gmail.com",
+    "email": "victorsinja@gmail.com",
+    
     "password": "password123"
 }
 
@@ -25,9 +27,10 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "admin",
-    "email": "admin@example.com",
+    "username": "sample",
+    "email": "sample@example.com",
     "password": "admin123",
+    "position": "backend developer",
     "role": "admin"
 }
 
@@ -36,7 +39,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "admin@example.com",
+    "email": "eddy@example.com",
     "password": "admin123"
 }
 
@@ -67,17 +70,17 @@ Authorization: Bearer {{adminToken}}
 
 ### Create testimonial
 POST http://localhost:8000/testimonials
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXJzaW5qYTY2MUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczNDk3OTQyOH0.5u8Z09F25A-mnRPYv08CeN-sQ4FvfyFrWHNJJCvNVfY
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aWN0b3JzaW5qYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczNjk4MTI2MX0.dAfjtfBnIRveCUWAY8UNnIMmVidjHJrvN8rVYA8qA8I
 Content-Type: application/json
 
 {
-    "userId": 4,
+    "userId": 14,
     "text": "This is a great service! Highly recommended."
 }
 
 ### Get all testimonials
 GET http://localhost:8000/testimonials
-Authorization: Bearer {{userToken}}
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZGR5QGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MzY5ODE5ODB9.oLsT7r4k09IGTKqNgkMbvcINqf8k8aGLxjUkw4AgnBI
 
 ### Get specific testimonial
 GET http://localhost:8000/testimonials/1
@@ -148,7 +151,13 @@ Content-Type: application/json
 
 ###create a testimonial
 POST http://localhost:8000/testimonials
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmVsQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM2OTc5MDM0fQ.z8g-HmffKZkQG3pkRaeiIUC05Kw85j444AS5RU3b5AQ
+Content-Type: application/json
 
+{
+    "userId": 10,
+    "text": "This is a great service! Highly recommended."
+}
 
 
 
