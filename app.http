@@ -135,6 +135,7 @@ Content-Type: application/json
     "username": "abel",
     "email": "abel@gmail.com",
     "password": "password123",
+    "position": "Software Developer",
     "phone": "1234567890"
 }
 
@@ -151,13 +152,20 @@ Content-Type: application/json
 
 ###create a testimonial
 POST http://localhost:8000/testimonials
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmVsQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM2OTc5MDM0fQ.z8g-HmffKZkQG3pkRaeiIUC05Kw85j444AS5RU3b5AQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmVsQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM3MDM3OTY2fQ.dYZR0U7VBdpzWPHpvBfmGNJXWmwuJvXSahbBIJubqv8
 Content-Type: application/json
 
 {
-    "userId": 10,
-    "text": "This is a great service! Highly recommended."
+    "userId": 21,
+    "text": "This is a great servqwertyuiopoiuytrtyuiopoiuytrtyuioiuytrtyuiopoiuytrtyuiopoiuytretyuiopoiuytrertyuiopåpoiuytrtyuiopoiuytrertyuioplkjhgfrtyuiokjhgftyuikjhhgfvbnmkjuhgfvbnmkjhgvbnmkjrtyuiuhghjhghjhghjhghjhghghghghgfhghghghghghghghghghghghghghghjhghjkjhghjkjhjklkjhjkjhjkjhjkjhjkjhjkjhjkjhjkjkjhjkjhjkjhjhjkjhjhjichhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhe! Highly recommendedgggggggggggggggggggggggggggggggggggggggggguuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu."
 }
+
+### Get all testimonials
+GET http://localhost:8000/testimonials
+
+
+
+
 
 
 

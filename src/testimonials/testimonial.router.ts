@@ -7,7 +7,7 @@ import { adminOrUserRoleAuth, adminRoleAuth, superuserRoleAuth, userRoleAuth } f
 export const testimonialRouter = new Hono();
 
 //get all testimonials
-testimonialRouter.get("/testimonials", adminOrUserRoleAuth, getTestimonials);
+testimonialRouter.get("/testimonials", getTestimonials);
 
 //get testimonial by id
 testimonialRouter.get("/testimonials/:id", adminOrUserRoleAuth, getTestimonialById);
