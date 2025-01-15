@@ -70,7 +70,6 @@ Authorization: Bearer {{adminToken}}
 
 ### Create testimonial
 POST http://localhost:8000/testimonials
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aWN0b3JzaW5qYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczNjk4MTI2MX0.dAfjtfBnIRveCUWAY8UNnIMmVidjHJrvN8rVYA8qA8I
 Content-Type: application/json
 
 {

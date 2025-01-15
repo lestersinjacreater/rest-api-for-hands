@@ -15,7 +15,6 @@ testimonialRouter.get("/testimonials/:id", adminOrUserRoleAuth, getTestimonialBy
 //create a testimonial
 testimonialRouter.post("/testimonials", 
     zValidator('json', testimonialSchema),
-    adminOrUserRoleAuth,
     createTestimonial
 );
 //delete a testimonial (admin only)
