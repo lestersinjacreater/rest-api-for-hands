@@ -229,3 +229,17 @@ Content-Type: application/json
 }
 
 
+### Create a possible client
+POST https://rest-api-for-hands.onrender.com/clients
+Content-Type: application/json
+
+{
+    "firstname": "osama",
+    "lastname": "laden",
+    "email": "john.doe@example.com",
+    "subject": "general",
+    "phone": "1234567890",
+    "message": "I am interested in your services."
+}
+
+
