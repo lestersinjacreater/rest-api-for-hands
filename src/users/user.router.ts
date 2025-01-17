@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import {  getUser,getUsers, createUser, updateUser, deleteUser} from "./user.controller"
 import { zValidator } from "@hono/zod-validator";
 import { userSchema } from "../validators";
-import { adminOrUserRoleAuth, adminRoleAuth, superuserRoleAuth, userRoleAuth } from "../middleware/bearAuth";
+import { adminOrUserRoleAuth, adminRoleAuth} from "../middleware/bearAuth";
 // import { adminRoleAuth } from "../middleware/bearAuth";
 export const userRouter = new Hono();
 

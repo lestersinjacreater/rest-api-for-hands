@@ -5,10 +5,9 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "Vieeetr",
-    "email": "vitotttinja@gmail.com",
+    "username": "Vieeeeeeetr",
+    "email": "vitotrrrttinja@gmail.com",
     "position": "Software Developer",
-    "password": "password123",
     "phone": "1234567890"
 }
 
@@ -163,9 +162,70 @@ Content-Type: application/json
 GET http://localhost:8000/testimonials
 
 
+###register a user with testimonial
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "username": "johddddn_doe",
+    "email": "johddddn@example.com",
+    "position": "Developer",
+    "phone": "1234567890",
+    "testimonial": "good service! Highly recommended."
+}
+
+### Create a possible client
+POST http://localhost:8000/clients
+Content-Type: application/json
+
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john.doe@example.com",
+    "username": "johndoe",
+    "subject": "general",
+    "phone": "1234567890",
+    "message": "I am interested in your services."
+}
+
+### Create a possible client
+POST http://localhost:8000/clients
+Content-Type: application/json
+
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john.doe@example.com",
+    "subject": "general",
+    "phone": "1234567890",
+    "message": "I am interested in your services."
+}
+
+### Create a possible client
+POST http://localhost:8000/clients
+Content-Type: application/json
+
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john.doe@example.com",
+    "subject": "general",
+    "phone": "1234567890",
+    "message": "I am interested in your services."
+}
 
 
+### Create a possible client
+POST http://localhost:8000/clients
+Content-Type: application/json
 
-
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john.doe@example.com",
+    "subject": "general",
+    "phone": "1234567890",
+    "message": "I am interested in your services."
+}
 
 

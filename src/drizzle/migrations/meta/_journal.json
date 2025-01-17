@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1734863480910,
-      "tag": "0000_military_komodo",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1736872227692,
-      "tag": "0001_dear_siren",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1736877695780,
-      "tag": "0002_yummy_celestials",
+      "when": 1737102744852,
+      "tag": "0000_overrated_slapstick",
       "breakpoints": true
     }
   ]

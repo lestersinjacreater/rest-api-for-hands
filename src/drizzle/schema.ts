@@ -40,6 +40,26 @@ export const UpdatesTable = pgTable('updates', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
+
+
+
+
+
+// Possible clients
+export const ClientsTable = pgTable('clients', {
+  clientid: serial('clientid').primaryKey(),
+  firstname: varchar('firstname', { length: 255 }).notNull(),
+  lastname: varchar('lastname', { length: 255 }).notNull(),
+  email: varchar('email', { length: 255 }).notNull(),
+  subject: varchar('subject', { length: 255 }).notNull().default('general'),
+  phone: varchar('phone', { length: 20 }).notNull().default(''),
+  message: varchar('message', { length: 1000 }).notNull(),
+});
+
+
+
+
+
 // Relations
 export const usersRelations = relations(UsersTable, ({ one, many }) => ({
   auth: one(AuthTable, {
@@ -84,3 +104,6 @@ export type TSTestimonial = typeof TestimonialsTable.$inferSelect;
 
 export type TIUpdate = typeof UpdatesTable.$inferInsert;
 export type TSUpdate = typeof UpdatesTable.$inferSelect;
+
+export type TIClient = typeof ClientsTable.$inferInsert;
+export type TSClient = typeof ClientsTable.$inferSelect;

@@ -15,6 +15,7 @@ import { userRouter } from './users/user.router'
 import { authRouter } from './auth/auth.router'
 import { testimonialRouter } from './testimonials/testimonial.router'
 import { updateRouter } from './updates/update.router'
+import { clientRouter } from './posible clients/posibleclients.router'
 
 const app = new Hono()
 
@@ -62,6 +63,7 @@ app.route("/", userRouter)        // User management
 app.route("/", testimonialRouter) // Testimonials management
 app.route("/", updateRouter)      // Updates management
 app.route("/auth", authRouter)    // Authentication
+app.route("/", clientRouter)      // Posible clients
 
 // Default route for unmatched paths
 app.all('*', (c) => {

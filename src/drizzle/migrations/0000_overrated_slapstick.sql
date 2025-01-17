@@ -12,6 +12,16 @@ CREATE TABLE IF NOT EXISTS "auth" (
 	"created_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "clients" (
+	"clientid" serial PRIMARY KEY NOT NULL,
+	"firstname" varchar(255) NOT NULL,
+	"lastname" varchar(255) NOT NULL,
+	"email" varchar(255) NOT NULL,
+	"subject" varchar(255) DEFAULT 'general' NOT NULL,
+	"phone" varchar(20) DEFAULT '' NOT NULL,
+	"message" varchar(1000) NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "testimonials" (
 	"testimonialid" serial PRIMARY KEY NOT NULL,
 	"user_id" integer,
@@ -30,6 +40,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"userid" serial PRIMARY KEY NOT NULL,
 	"username" varchar(255) NOT NULL,
 	"email" varchar(255) NOT NULL,
+	"position" varchar(255) NOT NULL,
 	"phone" varchar(20) DEFAULT '' NOT NULL,
 	"created_at" timestamp DEFAULT now(),
 	"updated_at" timestamp DEFAULT now(),
