@@ -19,6 +19,8 @@ import { clientRouter } from './posible clients/posibleclients.router'
 
 const app = new Hono()
 
+// change on the middle ware
+
 //CORS middleware
 // Add CORS middleware
 app.use('/*', cors({
