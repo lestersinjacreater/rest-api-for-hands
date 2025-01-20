@@ -24,7 +24,7 @@ const app = new Hono()
 //CORS middleware
 // Add CORS middleware
 app.use('/*', cors({
-  origin: ['https://frontend-hands-limited.vercel.app'], // Your frontend URL
+  origin: ['http://localhost:5173/'], // Your frontend URL
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
