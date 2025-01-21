@@ -40,11 +40,6 @@ export const UpdatesTable = pgTable('updates', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
-
-
-
-
-
 // Possible clients
 export const ClientsTable = pgTable('clients', {
   clientid: serial('clientid').primaryKey(),
@@ -57,10 +52,25 @@ export const ClientsTable = pgTable('clients', {
 });
 
 
+// services
+export const ServicesTable = pgTable('services', {
+  serviceid: serial('serviceid').primaryKey(),
+  title: varchar('name', { length: 255 }).notNull(),
+  description: varchar('description', { length: 1000 }).notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+  });
 
 
+  // products
+ export const ProductsTable = pgTable('products', {
+  productid: serial('productid').primaryKey(),
+  title: varchar('name', { length: 255 }).notNull(),
+  description: varchar('description', { length: 1000 }).notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+  });
 
-// Relations
+
+  // Relations
 export const usersRelations = relations(UsersTable, ({ one, many }) => ({
   auth: one(AuthTable, {
     fields: [UsersTable.userid],
@@ -107,3 +117,11 @@ export type TSUpdate = typeof UpdatesTable.$inferSelect;
 
 export type TIClient = typeof ClientsTable.$inferInsert;
 export type TSClient = typeof ClientsTable.$inferSelect;
+
+export type TIService = typeof ServicesTable.$inferInsert;
+export type TSService = typeof ServicesTable.$inferSelect;
+
+export type TIProduct = typeof ProductsTable.$inferInsert;
+export type TSProduct = typeof ProductsTable.$inferSelect;
+
+

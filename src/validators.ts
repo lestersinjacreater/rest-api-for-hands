@@ -43,3 +43,15 @@ export const clientSchema = z.object({
     subject: z.string().min(3),
     message: z.string().min(1).max(1000),
 });
+
+//services schema
+export const serviceSchema = z.object({
+    title: z.string().min(3),
+    description: z.string().min(3).max(1000),
+});
+
+//products schema
+export const productSchema = z.object({
+    title: z.string().min(3),
+    description: z.string().min(3).max(1000),
+});
