@@ -243,3 +243,23 @@ Content-Type: application/json
 }
 
 
+
+### create a product
+POST https://rest-api-for-hands.onrender.com/products
+Content-Type: application/json
+
+{
+    "title": "Product main",
+    "description": "This is a great product!"
+}
+
+
+### get all products
+GET https://rest-api-for-hands.onrender.com/products
+
+
+
+### delete a product
+DELETE https://rest-api-for-hands.onrender.com/products/1
+
+

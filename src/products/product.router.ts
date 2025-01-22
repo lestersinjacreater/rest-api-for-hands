@@ -17,6 +17,6 @@ productRouter.post("/products",
 productRouter.get("/products", getProducts);
 
 //delete product
-productRouter.delete("/products/:id", adminRoleAuth, deleteProduct);
+productRouter.delete("/products/:id", deleteProduct);
 
 
