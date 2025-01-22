@@ -16,5 +16,5 @@ serviceRouter.post("/services",
 serviceRouter.get("/services", getServices);
 
 //delete service
-serviceRouter.delete("/services/:id", adminRoleAuth, deleteService);
+serviceRouter.delete("/services/:id", deleteService);
 

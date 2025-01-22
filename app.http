@@ -263,3 +263,18 @@ GET https://rest-api-for-hands.onrender.com/products
 DELETE https://rest-api-for-hands.onrender.com/products/1
 
 
+### create a service
+POST https://rest-api-for-hands.onrender.com/services
+Content-Type: application/json
+
+{
+    "title": "Service main",
+    "description": "This is is a great service!"
+}   
+
+### get all services
+GET https://rest-api-for-hands.onrender.com/services
+
+
+### delete a service
+DELETE https://rest-api-for-hands.onrender.com/services/1
