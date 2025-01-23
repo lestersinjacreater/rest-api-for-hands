@@ -1,17 +1,35 @@
 import { Context } from "hono";
 import { createClientService, getclientsService, deleteClientsService, getClientByIdService } from "./posibleclients.servise";
+import { sendClientConfirmationEmail } from "../mailer";
+
+// // Create a client
+// export const createClient = async (c: Context) => {
+//     try {
+//         const clientData = await c.req.json();
+//         const createdClient = await createClientService(clientData);
+//         return c.json(createdClient, 200);
+//     } catch (error) {
+//         console.error("Error creating client:", error);
+//         return c.json({ error: "Failed to create client" }, 500);
+//     }
+// }
+
 
 // Create a client
 export const createClient = async (c: Context) => {
     try {
         const clientData = await c.req.json();
         const createdClient = await createClientService(clientData);
+
+        // Send confirmation email
+        await sendClientConfirmationEmail(clientData.email, clientData.firstname, clientData.lastname);
+
         return c.json(createdClient, 200);
     } catch (error) {
         console.error("Error creating client:", error);
         return c.json({ error: "Failed to create client" }, 500);
     }
-}
+};
 
 // Get all possible clients
 export const getclients = async (c: Context) => {

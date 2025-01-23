@@ -15,7 +15,6 @@ const transporter = nodemailer.createTransport({
 
 export const sendWelcomeEmail = async (email: string, username: string): Promise<void> => {
   try {
-    // Read and compile email template
     const templatePath = path.join(__dirname, 'templates', 'welcome-email.ejs');
     const emailHtml = await ejs.renderFile(templatePath, { username });
 
@@ -26,7 +25,6 @@ export const sendWelcomeEmail = async (email: string, username: string): Promise
       html: emailHtml
     };
 
-    // Send email
     await transporter.sendMail(mailOptions);
     console.log('Welcome email sent successfully to:', email);
   } catch (error) {
@@ -51,6 +49,26 @@ export const sendTestimonialThanksEmail = async (email: string, username: string
     console.log('Testimonial thank you email sent successfully to:', email);
   } catch (error) {
     console.error('Error sending testimonial thank you email:', error);
+    throw error;
+  }
+};
+
+export const sendClientConfirmationEmail = async (email: string, firstname: string, lastname: string): Promise<void> => {
+  try {
+    const templatePath = path.join(__dirname, 'templates', 'client-confirmation.ejs');
+    const emailHtml = await ejs.renderFile(templatePath, { firstname, lastname });
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: 'Message Received - HANDS LIMITED',
+      html: emailHtml
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Client confirmation email sent successfully to:', email);
+  } catch (error) {
+    console.error('Error sending client confirmation email:', error);
     throw error;
   }
 };
