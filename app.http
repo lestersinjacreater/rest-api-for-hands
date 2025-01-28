@@ -67,17 +67,17 @@ Authorization: Bearer {{adminToken}}
 
 ### Create testimonial
 POST http://localhost:8000/testimonials
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXJzaW5qYTY2MUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczNDk3OTQyOH0.5u8Z09F25A-mnRPYv08CeN-sQ4FvfyFrWHNJJCvNVfY
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM2OTc5OTMwfQ.E3yUTsq-tca9eC5R7wI4dFYN1d-v4GJPzPO3rFMmM4A
 Content-Type: application/json
 
 {
-    "userId": 4,
+    "userId": 3,
     "text": "This is a great service! Highly recommended."
 }
 
 ### Get all testimonials
 GET http://localhost:8000/testimonials
-Authorization: Bearer {{userToken}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM2OTc5OTMwfQ.E3yUTsq-tca9eC5R7wI4dFYN1d-v4GJPzPO3rFMmM4A
 
 ### Get specific testimonial
 GET http://localhost:8000/testimonials/1
@@ -85,13 +85,12 @@ Authorization: Bearer {{userToken}}
 
 ### Delete testimonial (Admin only)
 DELETE http://localhost:8000/testimonials/1
-Authorization: Bearer {{adminToken}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM2OTc5OTMwfQ.E3yUTsq-tca9eC5R7wI4dFYN1d-v4GJPzPO3rFMmM4A
 
 ### Update Endpoints (Admin Only)
 
 ### Create update
 POST http://localhost:8000/updates
-Authorization: Bearer {{adminToken}}
 Content-Type: application/json
 
 {
@@ -101,7 +100,6 @@ Content-Type: application/json
 
 ### Get all updates
 GET http://localhost:8000/updates
-Authorization: Bearer {{userToken}}
 
 ### Edit update
 PUT http://localhost:8000/updates/1
@@ -138,7 +136,7 @@ Content-Type: application/json
 
 
 ### Login user
-POST http://localhost:8000/auth/login
+POST https://rest-api-for-hands.onrender.com/auth/login
 Content-Type: application/json
 
 {
@@ -147,9 +145,23 @@ Content-Type: application/json
 }
 
 ###create a testimonial
-POST http://localhost:8000/testimonials
+GET https://rest-api-for-hands.onrender.com/users
 
 
+##reate a service
+POST https://rest-api-for-hands.onrender.com/services
+Content-Type: application/json
 
+{
+    "title": "Service main",
+    "description": "This is is a great service!"
+}   
+
+### get all services
+GET https://rest-api-for-hands.onrender.com/testimonials
+
+
+### delete a service
+DELETE https://rest-api-for-hands.onrender.com/services/1 
 
 

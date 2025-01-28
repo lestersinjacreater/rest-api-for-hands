@@ -7,20 +7,20 @@ import { adminOrUserRoleAuth, adminRoleAuth, superuserRoleAuth, userRoleAuth } f
 export const testimonialRouter = new Hono();
 
 //get all testimonials
-testimonialRouter.get("/testimonials", adminOrUserRoleAuth, getTestimonials);
+testimonialRouter.get("/testimonials", getTestimonials);
 
 //get testimonial by id
-testimonialRouter.get("/testimonials/:id", adminOrUserRoleAuth, getTestimonialById);
+testimonialRouter.get("/testimonials/:id",  getTestimonialById);
 
 //create a testimonial
 testimonialRouter.post("/testimonials", 
     zValidator('json', testimonialSchema),
-    adminOrUserRoleAuth,
+    // adminOrUserRoleAuth,
     createTestimonial
 );
 //delete a testimonial (admin only)
 testimonialRouter.delete("/testimonials/:id", 
-    adminRoleAuth,  // Only users with admin role can pass this middleware
+    // adminRoleAuth,  // Only users with admin role can pass this middleware
     deleteTestimonial
 );
 

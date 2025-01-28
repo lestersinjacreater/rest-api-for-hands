@@ -7,19 +7,19 @@ import { adminOrUserRoleAuth, adminRoleAuth, superuserRoleAuth, userRoleAuth } f
 export const userRouter = new Hono();
 
 //get all users
-userRouter.get("/users", adminOrUserRoleAuth,getUsers );
+userRouter.get("/users",getUsers );
 
 //get a single user   
-userRouter.get("/users/:id",adminOrUserRoleAuth , getUser)
+userRouter.get("/users/:id" , getUser)
 // create a user 
 userRouter.post("/users", zValidator('json', userSchema, (result, c) => {
     if (!result.success) {
         return c.json(result.error, 400)
     }
-}), adminOrUserRoleAuth ,createUser)
+}) ,createUser)
 //update a user
-userRouter.put("/users/:id", adminOrUserRoleAuth, updateUser)
+userRouter.put("/users/:id",  updateUser)
 
-userRouter.delete("/users/:id",adminRoleAuth , deleteUser)
+userRouter.delete("/users/:id", deleteUser)
 // search
 // userRouter.get("/users/search", searchUsers)
