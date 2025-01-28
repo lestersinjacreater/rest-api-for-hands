@@ -5,9 +5,9 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "Victor",
-    "email": "victorsinja@gmail.com",
-    "password": "password123",
+    "username": "Vieeeeeeetr",
+    "email": "vitotrrrttinja@gmail.com",
+    "position": "Software Developer",
     "phone": "1234567890"
 }
 
@@ -16,7 +16,8 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "lestersinja661@gmail.com",
+    "email": "victorsinja@gmail.com",
+    
     "password": "password123"
 }
 
@@ -25,9 +26,10 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "admin",
-    "email": "admin@example.com",
+    "username": "sample",
+    "email": "sample@example.com",
     "password": "admin123",
+    "position": "backend developer",
     "role": "admin"
 }
 
@@ -36,7 +38,7 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "admin@example.com",
+    "email": "eddy@example.com",
     "password": "admin123"
 }
 
@@ -67,17 +69,17 @@ Authorization: Bearer {{adminToken}}
 
 ### Create testimonial
 POST http://localhost:8000/testimonials
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM2OTc5OTMwfQ.E3yUTsq-tca9eC5R7wI4dFYN1d-v4GJPzPO3rFMmM4A
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXJzaW5qYTY2MUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczNDk3OTQyOH0.5u8Z09F25A-mnRPYv08CeN-sQ4FvfyFrWHNJJCvNVfY
 Content-Type: application/json
 
 {
-    "userId": 3,
+    "userId": 4,
     "text": "This is a great service! Highly recommended."
 }
 
 ### Get all testimonials
 GET http://localhost:8000/testimonials
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM2OTc5OTMwfQ.E3yUTsq-tca9eC5R7wI4dFYN1d-v4GJPzPO3rFMmM4A
+Authorization: Bearer {{userToken}}
 
 ### Get specific testimonial
 GET http://localhost:8000/testimonials/1
@@ -130,6 +132,7 @@ Content-Type: application/json
     "username": "abel",
     "email": "abel@gmail.com",
     "password": "password123",
+    "position": "Software Developer",
     "phone": "1234567890"
 }
 
@@ -145,23 +148,9 @@ Content-Type: application/json
 }
 
 ###create a testimonial
-GET https://rest-api-for-hands.onrender.com/users
+POST http://localhost:8000/testimonials
 
 
-##reate a service
-POST https://rest-api-for-hands.onrender.com/services
-Content-Type: application/json
 
-{
-    "title": "Service main",
-    "description": "This is is a great service!"
-}   
-
-### get all services
-GET https://rest-api-for-hands.onrender.com/testimonials
-
-
-### delete a service
-DELETE https://rest-api-for-hands.onrender.com/services/1 
 
 

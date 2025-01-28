@@ -15,13 +15,18 @@ import { userRouter } from './users/user.router'
 import { authRouter } from './auth/auth.router'
 import { testimonialRouter } from './testimonials/testimonial.router'
 import { updateRouter } from './updates/update.router'
+import { clientRouter } from './posible clients/posibleclients.router'
+import { serviceRouter } from './offerdservices/services.router'
+import { productRouter } from './products/product.router';
 
 const app = new Hono()
+
+// change on the middle ware
 
 //CORS middleware
 // Add CORS middleware
 app.use('/*', cors({
-  origin: ['http://localhost:5173'], // Your frontend URL
+  origin: ['*'], // Your frontend URL
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
@@ -62,6 +67,9 @@ app.route("/", userRouter)        // User management
 app.route("/", testimonialRouter) // Testimonials management
 app.route("/", updateRouter)      // Updates management
 app.route("/auth", authRouter)    // Authentication
+app.route("/", clientRouter)      // Posible clients
+app.route("/", serviceRouter)     // Offered services
+app.route("/", productRouter)     // Products
 
 // Default route for unmatched paths
 app.all('*', (c) => {

@@ -9,10 +9,22 @@ export const getTestimonialsService = async (limit?: number): Promise<TSTestimon
   if (limit) {
     return await db.query.TestimonialsTable.findMany({
       limit,
+      with: { user: {
+        columns: {
+          username: true,
+          position: true,
+      }}
+    },
       orderBy: (updates, { desc }) => [desc(updates.createdAt)]
     });
   }
   return await db.query.TestimonialsTable.findMany({
+    with: { user: {
+      columns: {
+        username: true,
+        position: true,
+    }}},
+  
     orderBy: (updates, { desc }) => [desc(updates.createdAt)]
   });
 };
@@ -36,4 +48,3 @@ export const getTestimonialByIdService = async (id: number): Promise<TSTestimoni
   });
   return testimonial || null;
 };
-
