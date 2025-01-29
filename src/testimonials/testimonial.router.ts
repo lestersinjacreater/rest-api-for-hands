@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { createTestimonial, deleteTestimonial, getTestimonialById, getTestimonials } from "./testimonial.controller";
+import { createTestimonial, deleteTestimonial, getTestimonialById, getTestimonials, updateTestimonial } from "./testimonial.controller";
 import { zValidator } from "@hono/zod-validator";
 import { testimonialSchema } from "../validators";
 import { adminOrUserRoleAuth, adminRoleAuth, superuserRoleAuth, userRoleAuth } from "../middleware/bearAuth";
@@ -11,6 +11,8 @@ testimonialRouter.get("/testimonials", getTestimonials);
 
 //get testimonial by id
 testimonialRouter.get("/testimonials/:id",  getTestimonialById);
+
+testimonialRouter.put("/testimonials/:id",  updateTestimonial);
 
 //create a testimonial
 testimonialRouter.post("/testimonials", 

@@ -29,6 +29,9 @@ export const getTestimonialsService = async (limit?: number): Promise<TSTestimon
   });
 };
 
+
+
+
 // Create testimonial
 export const createTestimonialService = async (testimonial: TITestimonial): Promise<string> => {
   await db.insert(TestimonialsTable).values(testimonial);
@@ -47,4 +50,11 @@ export const getTestimonialByIdService = async (id: number): Promise<TSTestimoni
     where: (testimonial, { eq }) => eq(testimonial.testimonialid, id),
   });
   return testimonial || null;
+};
+// Update testimonial
+export const updateTestimonialService = async (id: number, testimonial: Partial<TITestimonial>): Promise<string> => {
+  await db.update(TestimonialsTable)
+    .set(testimonial)
+    .where(eq(TestimonialsTable.testimonialid, id));
+  return "Testimonial updated successfully";
 };

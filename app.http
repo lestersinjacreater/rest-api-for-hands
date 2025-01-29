@@ -45,35 +45,49 @@ Content-Type: application/json
 ### User Management Endpoints
 
 ### Get all users (Admin only)
-GET http://localhost:8000/users
+GET https://rest-api-for-hands.onrender.com/users
 Authorization: Bearer {{adminToken}}
 
-### Get specific user
-GET http://localhost:8000/users/1
-Authorization: Bearer {{userToken}}
+### Get all users (Admin only)
+PUT https://rest-api-for-hands.onrender.com/users/14
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
 
-### Update user
-PUT http://localhost:8000/users/1
+{
+  "position": "newusername",
+}
+
+### Get specific user
+PUT https://rest-api-for-hands.onrender.com/testimonial/44
 Authorization: Bearer {{userToken}}
 Content-Type: application/json
 
 {
-    "phone": "9876543210"
+    "text": "some loveky service matee"
+}
+
+### Update user
+POST  https://rest-api-for-hands.onrender.com/updates
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+  "userId": 15,
+  "content": "Added a new feature for user analytics tracking."
 }
 
 ### Delete user (Admin only)
-DELETE http://localhost:8000/users/1
+DELETE https://rest-api-for-hands.onrender.com/users/1
 Authorization: Bearer {{adminToken}}
 
 ### Testimonial Endpoints
 
 ### Create testimonial
-POST http://localhost:8000/testimonials
+PUT http://localhost:8000/testimonials
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXJzaW5qYTY2MUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczNDk3OTQyOH0.5u8Z09F25A-mnRPYv08CeN-sQ4FvfyFrWHNJJCvNVfY
 Content-Type: application/json
 
 {
-    "userId": 4,
     "text": "This is a great service! Highly recommended."
 }
 
@@ -148,7 +162,16 @@ Content-Type: application/json
 }
 
 ###create a testimonial
-POST http://localhost:8000/testimonials
+GET  https://rest-api-for-hands.onrender.com/users
+
+###
+PUT https://rest-api-for-hands.onrender.com/users/15
+Content-Type: application/json
+
+{
+    "email": "teddy@example.com",
+    "position": "devnotnew"
+  }
 
 
 
