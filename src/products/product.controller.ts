@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { createProductService,deleteProductService,getProductsService } from "./product.service";
+import { createProductService,deleteProductService,getProductService,getProductsService, updateProductService } from "./product.service";
 
 //Create a product
 export const createProduct = async (c: Context) => {
@@ -41,5 +41,25 @@ export const getProducts = async (c: Context) => {
     } catch (error) {
         console.error("Error fetching products", error);
         return c.json({ error: "Failed to get products" }, 500);
+    }
+}
+//update a product
+export const updateProduct = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    const productData = await c.req.json();
+    try {
+        // search for the product
+        const searchedProduct = await getProductService(id);
+        if (searchedProduct == undefined) return c.text("Product not found", 404);
+        // get the data and update it
+        const res = await updateProductService(id, productData);
+        // return a success message
+        if (!res) return c.text("Product not updated", 404);
+
+        return c.json({ msg: res }, 201);
+    } catch (error: any) {
+        return c.json({ error: error?.message }, 400);
     }
 }

@@ -92,7 +92,7 @@ Content-Type: application/json
 }
 
 ### Get all testimonials
-GET http://localhost:8000/testimonials
+GET http://localhost:8000/products
 Authorization: Bearer {{userToken}}
 
 ### Get specific testimonial
@@ -162,7 +162,7 @@ Content-Type: application/json
 }
 
 ###create a testimonial
-GET  https://rest-api-for-hands.onrender.com/users
+GET  https://rest-api-for-hands.onrender.com/products
 
 ###
 PUT https://rest-api-for-hands.onrender.com/users/15
