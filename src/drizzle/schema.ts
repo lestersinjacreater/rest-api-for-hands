@@ -1,5 +1,6 @@
 import { pgTable, serial, varchar, timestamp, integer, boolean, pgEnum } from "drizzle-orm/pg-core";
 import { Many, relations } from "drizzle-orm";
+import { string } from "zod";
 
 // Role Enum
 export const roleEnum = pgEnum("role", ["admin", "user", "superuser"]);
@@ -57,6 +58,7 @@ export const ServicesTable = pgTable('services', {
   serviceid: serial('serviceid').primaryKey(),
   title: varchar('name', { length: 255 }).notNull(),
   description: varchar('description', { length: 1000 }).notNull(),
+  imageUrl: varchar('imageUrl', { length:1000 }),
   createdAt: timestamp('created_at').defaultNow(),
   });
 
@@ -66,6 +68,7 @@ export const ServicesTable = pgTable('services', {
   productid: serial('productid').primaryKey(),
   title: varchar('name', { length: 255 }).notNull(),
   description: varchar('description', { length: 1000 }).notNull(),
+  imageUrl: varchar('imageUrl', { length: 1000 }),
   createdAt: timestamp('created_at').defaultNow(),
   });
 

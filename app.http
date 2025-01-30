@@ -83,12 +83,12 @@ Authorization: Bearer {{adminToken}}
 ### Testimonial Endpoints
 
 ### Create testimonial
-PUT http://localhost:8000/testimonials
+PUT http://localhost:8000/testimonials/44
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXJzaW5qYTY2MUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczNDk3OTQyOH0.5u8Z09F25A-mnRPYv08CeN-sQ4FvfyFrWHNJJCvNVfY
 Content-Type: application/json
 
 {
-    "text": "This is a great service! Highly recommended."
+    "text": "This is a great service! Highly recommended.By this user"
 }
 
 ### Get all testimonials
