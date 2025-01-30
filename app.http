@@ -118,12 +118,12 @@ Content-Type: application/json
 GET http://localhost:8000/updates
 
 ### Edit update
-PUT http://localhost:8000/updates/1
+PUT http://localhost:8000/products/1
 Authorization: Bearer {{adminToken}}
 Content-Type: application/json
 
 {
-    "content": "Updated: New feature release with additional improvements!"
+    "imageUrl": "https://example.com/new.jpg"
 }
 
 ### Delete update
@@ -139,15 +139,13 @@ Authorization: Bearer {{adminToken}}
 
 ###create a user
 # Register a new user
-POST http://localhost:8000/auth/register
+POST http://localhost:8000/products
 Content-Type: application/json
 
 {
-    "username": "abel",
-    "email": "abel@gmail.com",
-    "password": "password123",
-    "position": "Software Developer",
-    "phone": "1234567890"
+    "title": "Gaming Headset",
+    "description": "Noise-canceling headset with surround sound.",
+    "imageUrl": "https://example.com/images/headset.jpg"
 }
 
 
