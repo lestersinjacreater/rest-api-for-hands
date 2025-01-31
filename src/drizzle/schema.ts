@@ -4,6 +4,8 @@ import { Many, relations } from "drizzle-orm";
 // Role Enum
 export const roleEnum = pgEnum("role", ["admin", "user", "superuser"]);
 
+
+
 // Users Table
 export const UsersTable = pgTable('users', {
   userid: serial('userid').primaryKey(),

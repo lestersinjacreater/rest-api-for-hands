@@ -26,8 +26,8 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username": "sample",
-    "email": "sample@example.com",
+    "username": "smart",
+    "email": "smart@example.com",
     "password": "admin123",
     "position": "backend developer",
     "role": "admin"
@@ -277,4 +277,19 @@ GET https://rest-api-for-hands.onrender.com/services
 
 
 ### delete a service
-DELETE https://rest-api-for-hands.onrender.com/services/1
+DELETE https://rest-api-for-hands.onrender.com/services/
+
+
+
+
+### Register admin user
+POST https://rest-api-for-hands.onrender.com/auth/register
+Content-Type: application/json
+
+{
+    "username": "smart",
+    "email": "smart@example.com",
+    "password": "admin123",
+    "position": "backend developer",
+    "role": "admin"
+}
