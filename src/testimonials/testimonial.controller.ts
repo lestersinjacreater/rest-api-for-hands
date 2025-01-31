@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { createTestimonialService, getTestimonialByIdService,getTestimonialsService ,deleteTestimonialService } from "./testimonial.service";
+import { createTestimonialService, getTestimonialByIdService,getTestimonialsService ,deleteTestimonialService, updateTestimonialService } from "./testimonial.service";
 import { getEmailByUserId } from "../auth/auth.service";
 import { sendTestimonialThanksEmail } from "../mailer";
 import { getUserService } from "../users/user.service";
@@ -74,3 +74,23 @@ export const getTestimonialById = async (c: Context) => {
 }
 
 
+//update a testimonial
+export const updateTestimonial = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    const testimonial = await c.req.json();
+    try {
+        // search for the testimonial
+        const searchedTestimonial = await getTestimonialByIdService(id);
+        if (searchedTestimonial == undefined) return c.text("Testimonial not found", 404);
+        // get the data and update it
+        const res = await updateTestimonialService(id, testimonial);
+        // return a success message
+        if (!res) return c.text("Testimonial not updated", 404);
+
+        return c.json({ msg: res }, 201);
+    } catch (error: any) {
+        return c.json({ error: error?.message }, 400);
+    }
+};

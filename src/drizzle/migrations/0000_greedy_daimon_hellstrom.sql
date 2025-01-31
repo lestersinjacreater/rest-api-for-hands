@@ -22,6 +22,22 @@ CREATE TABLE IF NOT EXISTS "clients" (
 	"message" varchar(1000) NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "products" (
+	"productid" serial PRIMARY KEY NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"description" varchar(1000) NOT NULL,
+	"imageUrl" varchar(1000),
+	"created_at" timestamp DEFAULT now()
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "services" (
+	"serviceid" serial PRIMARY KEY NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"description" varchar(1000) NOT NULL,
+	"imageUrl" varchar(1000),
+	"created_at" timestamp DEFAULT now()
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "testimonials" (
 	"testimonialid" serial PRIMARY KEY NOT NULL,
 	"user_id" integer,

@@ -45,40 +45,55 @@ Content-Type: application/json
 ### User Management Endpoints
 
 ### Get all users (Admin only)
-GET http://localhost:8000/users
+GET https://rest-api-for-hands.onrender.com/users
 Authorization: Bearer {{adminToken}}
 
-### Get specific user
-GET http://localhost:8000/users/1
-Authorization: Bearer {{userToken}}
+### Get all users (Admin only)
+PUT https://rest-api-for-hands.onrender.com/users/14
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
 
-### Update user
-PUT http://localhost:8000/users/1
+{
+  "position": "newusername",
+}
+
+### Get specific user
+PUT https://rest-api-for-hands.onrender.com/testimonial/44
 Authorization: Bearer {{userToken}}
 Content-Type: application/json
 
 {
-    "phone": "9876543210"
+    "text": "some loveky service matee"
+}
+
+### Update user
+POST  https://rest-api-for-hands.onrender.com/updates
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+  "userId": 15,
+  "content": "Added a new feature for user analytics tracking."
 }
 
 ### Delete user (Admin only)
-DELETE http://localhost:8000/users/1
+DELETE https://rest-api-for-hands.onrender.com/users/1
 Authorization: Bearer {{adminToken}}
 
 ### Testimonial Endpoints
 
 ### Create testimonial
-POST http://localhost:8000/testimonials
+PUT http://localhost:8000/testimonials/44
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsZXN0ZXJzaW5qYTY2MUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczNDk3OTQyOH0.5u8Z09F25A-mnRPYv08CeN-sQ4FvfyFrWHNJJCvNVfY
 Content-Type: application/json
 
 {
-    "userId": 14,
-    "text": "This is a great service! Highly recommended."
+    "text": "This is a great service! Highly recommended.By this user"
 }
 
 ### Get all testimonials
-GET http://localhost:8000/testimonials
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZGR5QGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MzY5ODE5ODB9.oLsT7r4k09IGTKqNgkMbvcINqf8k8aGLxjUkw4AgnBI
+GET http://localhost:8000/products
+Authorization: Bearer {{userToken}}
 
 ### Get specific testimonial
 GET http://localhost:8000/testimonials/1
@@ -86,13 +101,12 @@ Authorization: Bearer {{userToken}}
 
 ### Delete testimonial (Admin only)
 DELETE http://localhost:8000/testimonials/1
-Authorization: Bearer {{adminToken}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM2OTc5OTMwfQ.E3yUTsq-tca9eC5R7wI4dFYN1d-v4GJPzPO3rFMmM4A
 
 ### Update Endpoints (Admin Only)
 
 ### Create update
 POST http://localhost:8000/updates
-Authorization: Bearer {{adminToken}}
 Content-Type: application/json
 
 {
@@ -102,15 +116,14 @@ Content-Type: application/json
 
 ### Get all updates
 GET http://localhost:8000/updates
-Authorization: Bearer {{userToken}}
 
 ### Edit update
-PUT http://localhost:8000/updates/1
+PUT http://localhost:8000/products/1
 Authorization: Bearer {{adminToken}}
 Content-Type: application/json
 
 {
-    "content": "Updated: New feature release with additional improvements!"
+    "imageUrl": "https://example.com/new.jpg"
 }
 
 ### Delete update
@@ -126,21 +139,19 @@ Authorization: Bearer {{adminToken}}
 
 ###create a user
 # Register a new user
-POST http://localhost:8000/auth/register
+POST http://localhost:8000/products
 Content-Type: application/json
 
 {
-    "username": "abel",
-    "email": "abel@gmail.com",
-    "password": "password123",
-    "position": "Software Developer",
-    "phone": "1234567890"
+    "title": "Gaming Headset",
+    "description": "Noise-canceling headset with surround sound.",
+    "imageUrl": "https://example.com/images/headset.jpg"
 }
 
 
 
 ### Login user
-POST http://localhost:8000/auth/login
+POST https://rest-api-for-hands.onrender.com/auth/login
 Content-Type: application/json
 
 {
@@ -149,147 +160,18 @@ Content-Type: application/json
 }
 
 ###create a testimonial
-POST http://localhost:8000/testimonials
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmVsQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM3MDM3OTY2fQ.dYZR0U7VBdpzWPHpvBfmGNJXWmwuJvXSahbBIJubqv8
+GET  https://rest-api-for-hands.onrender.com/products
+
+###
+PUT https://rest-api-for-hands.onrender.com/users/15
 Content-Type: application/json
 
 {
-    "userId": 21,
-    "text": "This is a great servqwertyuiopoiuytrtyuiopoiuytrtyuioiuytrtyuiopoiuytrtyuiopoiuytretyuiopoiuytrertyuiopåpoiuytrtyuiopoiuytrertyuioplkjhgfrtyuiokjhgftyuikjhhgfvbnmkjuhgfvbnmkjhgvbnmkjrtyuiuhghjhghjhghjhghjhghghghghgfhghghghghghghghghghghghghghghjhghjkjhghjkjhjklkjhjkjhjkjhjkjhjkjhjkjhjkjhjkjkjhjkjhjkjhjhjkjhjhjichhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhe! Highly recommendedgggggggggggggggggggggggggggggggggggggggggguuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu."
-}
-
-### Get all testimonials
-GET http://localhost:8000/testimonials
-
-
-###register a user with testimonial
-POST http://localhost:8000/auth/register
-Content-Type: application/json
-
-{
-    "username": "johddddn_doe",
-    "email": "johddddn@example.com",
-    "position": "Developer",
-    "phone": "1234567890",
-    "testimonial": "good service! Highly recommended."
-}
-
-### Create a possible client
-POST http://localhost:8000/clients
-Content-Type: application/json
-
-{
-    "firstname": "John",
-    "lastname": "Doe",
-    "email": "john.doe@example.com",
-    "username": "johndoe",
-    "subject": "general",
-    "phone": "1234567890",
-    "message": "I am interested in your services."
-}
-
-### Create a possible client
-POST http://localhost:8000/clients
-Content-Type: application/json
-
-{
-    "firstname": "John",
-    "lastname": "Doe",
-    "email": "john.doe@example.com",
-    "subject": "general",
-    "phone": "1234567890",
-    "message": "I am interested in your services."
-}
-
-### Create a possible client
-POST http://localhost:8000/clients
-Content-Type: application/json
-
-{
-    "firstname": "John",
-    "lastname": "Doe",
-    "email": "john.doe@example.com",
-    "subject": "general",
-    "phone": "1234567890",
-    "message": "I am interested in your services."
-}
-
-
-### Create a possible client
-POST http://localhost:8000/clients
-Content-Type: application/json
-
-{
-    "firstname": "John",
-    "lastname": "Doe",
-    "email": "john.doe@example.com",
-    "subject": "general",
-    "phone": "1234567890",
-    "message": "I am interested in your services."
-}
-
-
-### Create a possible client
-POST https://rest-api-for-hands.onrender.com/clients
-Content-Type: application/json
-
-{
-    "firstname": "osama",
-    "lastname": "laden",
-    "email": "john.doe@example.com",
-    "subject": "general",
-    "phone": "1234567890",
-    "message": "I am interested in your services."
-}
-
-
-
-### create a product
-POST https://rest-api-for-hands.onrender.com/products
-Content-Type: application/json
-
-{
-    "title": "Product main",
-    "description": "This is a great product!"
-}
-
-
-### get all products
-GET https://rest-api-for-hands.onrender.com/products
-
-
-
-### delete a product
-DELETE https://rest-api-for-hands.onrender.com/products/1
-
-
-### create a service
-POST https://rest-api-for-hands.onrender.com/services
-Content-Type: application/json
-
-{
-    "title": "Service main",
-    "description": "This is is a great service!"
-}   
-
-### get all services
-GET https://rest-api-for-hands.onrender.com/services
-
-
-### delete a service
-DELETE https://rest-api-for-hands.onrender.com/services/
+    "email": "teddy@example.com",
+    "position": "devnotnew"
+  }
 
 
 
 
-### Register admin user
-POST https://rest-api-for-hands.onrender.com/auth/register
-Content-Type: application/json
 
-{
-    "username": "smart",
-    "email": "smart@example.com",
-    "password": "admin123",
-    "position": "backend developer",
-    "role": "admin"
-}

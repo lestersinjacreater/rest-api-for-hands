@@ -21,4 +21,17 @@ export const getServicesService = async (): Promise<TSService[]> => {
   };
   
   
-  
+  // Get service by ID
+  export const getServiceByIdService = async (id: number): Promise<TSService | null> => {
+    const service = await db.query.ServicesTable.findFirst({
+      where: eq(ServicesTable.serviceid, id)
+    });
+    return service || null;
+  };
+  // Update service - needed for service updates
+  export const updateServiceService = async (id: number, service: Partial<TIService>): Promise<string> => {
+    await db.update(ServicesTable)
+      .set(service)
+      .where(eq(ServicesTable.serviceid, id));
+    return "Service updated successfully";
+  };

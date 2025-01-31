@@ -7,14 +7,14 @@ import { adminOrUserRoleAuth, adminRoleAuth, superuserRoleAuth, userRoleAuth } f
 export const updateRouter = new Hono();
 
 //create an update (admin only)
-updateRouter.post("/updates", zValidator('json', updateSchema), adminRoleAuth, createUpdate);
+updateRouter.post("/updates", zValidator('json', updateSchema),  createUpdate);
 
 //delete an update (admin only)
-updateRouter.delete("/updates/:id", adminRoleAuth, deleteUpdate);
+updateRouter.delete("/updates/:id",  deleteUpdate);
 
 //get all updates
-updateRouter.get("/updates", adminOrUserRoleAuth, getUpdates);
+updateRouter.get("/updates",  getUpdates);
 
 //edit an update (admin only)
-updateRouter.put("/updates/:id", adminRoleAuth, editUpdate);
+updateRouter.put("/updates/:id",  editUpdate);
 

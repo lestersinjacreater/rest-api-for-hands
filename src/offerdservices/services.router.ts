@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { createService, getServices, deleteService } from "./services.controller";
+import { createService, getServices, deleteService, updateService } from "./services.controller";
 import { zValidator } from "@hono/zod-validator";
 import { serviceSchema } from "../validators";
 import { adminRoleAuth } from "../middleware/bearAuth";
@@ -14,6 +14,9 @@ serviceRouter.post("/services",
 
 //get all services
 serviceRouter.get("/services", getServices);
+
+//update service
+serviceRouter.put("/services/:id", updateService);
 
 //delete service
 serviceRouter.delete("/services/:id", deleteService);

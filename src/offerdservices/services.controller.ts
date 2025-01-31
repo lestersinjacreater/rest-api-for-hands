@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { createServiceService,deleteServiceService,getServicesService } from "./services.service";
+import { createServiceService,deleteServiceService,getServiceByIdService,getServicesService, updateServiceService } from "./services.service";
 
 // Create a  service
 export const createService = async (c: Context) => {
@@ -44,3 +44,23 @@ export const getServices = async (c: Context) => {
 
 
    
+// update a service
+export const updateService = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    const serviceData = await c.req.json();
+    try {
+        // search for the service
+        const searchedService = await getServiceByIdService(id);
+        if (searchedService == undefined) return c.text("Service not found", 404);
+        // get the data and update it
+        const res = await updateServiceService(id, serviceData);
+        // return a success message
+        if (!res) return c.text("Service not updated", 404);
+
+        return c.json({ msg: res }, 201);
+    } catch (error: any) {
+        return c.json({ error: error?.message }, 400);
+    }
+}

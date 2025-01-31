@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { getProducts,createProduct,deleteProduct } from "./product.controller";
+import { getProducts,createProduct,deleteProduct, updateProduct } from "./product.controller";
 import { zValidator } from "@hono/zod-validator";
 import { productSchema } from "../validators";
 import { adminRoleAuth } from "../middleware/bearAuth";
@@ -13,6 +13,8 @@ productRouter.post("/products",
     createProduct
 );
 
+//update product
+productRouter.put("/products/:id", updateProduct);
 //get all products
 productRouter.get("/products", getProducts);
 
